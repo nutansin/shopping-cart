@@ -1,0 +1,46 @@
+.filters {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+}
+.filters label span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    font-size: .8em;
+    border-radius: 50%;
+    line-height: 35px;
+    text-align: center;
+    color: #1b1a20;
+    background-color: #ececec;
+    border: 1px solid transparent;
+}
+.filters label {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    font-size: .8em;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+    line-height: 35px;
+    text-align: center;
+}
+.filters label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.filters input:checked~.checkmark {
+    background-color: #1b1a20;
+    color: white;
+}   
+.shelf-container {
+    width: 57%;
+    display: inline-block;
+    vertical-align: top;
+}
