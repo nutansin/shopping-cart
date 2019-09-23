@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Checkbox from '../checkbox';
+import {updateFilters} from '../../services/filters/actions';
+import { connect } from 'react-redux';
 
 const availableSizes = ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'];
 
@@ -9,14 +11,14 @@ class Filters extends Component {
     }
     
     toggleCheckbox = (label) => {
-        console.log('change in filters',label);
         let index = this.state.filteredSize.indexOf(label);
+
         if(this.state.filteredSize.indexOf(label) > -1) {
             this.state.filteredSize.splice(index, 1);
         } else {
             this.state.filteredSize.push(label);
         }
-        console.log(this.state.filteredSize);
+        this.props.updateFilters(Array.from(this.state.filteredSize));
     }
     checkbox = (label) => {
        return ( 
@@ -29,8 +31,13 @@ class Filters extends Component {
         />)
     }
     createCheckbox = () => availableSizes.map(this.checkbox);
+
+    componentDidMount = () => {
+        this.props.updateFilters(Array.from(this.state.filteredSize));
+    }
     
     render = () => {
+        console.log(this.props.filters);
         return (
             <React.Fragment>
                 <div className="filters">
@@ -41,4 +48,11 @@ class Filters extends Component {
         )
     }
 }
-export default Filters;
+
+const mapStateToProps = (state) => ({
+        filters: state.filters.item
+});
+export default connect(
+    mapStateToProps, 
+    {updateFilters}
+)(Filters);

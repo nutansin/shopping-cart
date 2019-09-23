@@ -3,7 +3,9 @@ import {Provider} from 'react-redux';
 import store from './services/store';
 import Filters from './component/shelf/filter';
 import Shelf from './component/shelf/productList/index';
+import FloatCart from './component/floatCart/index';
 import './App.css';
+
 
 class App extends Component {
   render() {
@@ -11,6 +13,7 @@ class App extends Component {
       <Provider store={store}>
         <Filters/>
         <Shelf/>
+        <FloatCart />
       </Provider>
     );
   }
